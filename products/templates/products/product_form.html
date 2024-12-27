@@ -1,0 +1,15 @@
+<!-- product_form.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{% if product %}상품 수정{% else %}새 상품 등록{% endif %}</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">{% if product %}수정{% else %}등록{% endif %}</button>
+  </form>
+
+  <a href="{% url 'product_list' %}">목록으로 돌아가기</a>
+{% endblock %}

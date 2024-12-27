@@ -1,0 +1,19 @@
+<!-- product_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>상품 목록</h1>
+  <a href="{% url 'product_create' %}">새 상품 등록</a>
+
+  <ul>
+    {% for product in products %}
+      <li>
+        <h2><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h2>
+        <p>{{ product.description }}</p>
+        <p>가격: {{ product.price }}원</p>
+        <a href="{% url 'product_edit' product.id %}">수정</a> | 
+        <a href="{% url 'product_delete' product.id %}">삭제</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
